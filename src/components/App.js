@@ -4,9 +4,10 @@ import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import CoursesPage from "./courses/CoursesPage";
+import AuthorsPage from "./authors/AuthorsPage";
 import PageNotFound from "./PageNotFound";
 import ManageCoursePage from "./courses/ManageCoursePage"; //eslint-disable-line import/no-named-as-default
-import ManageAuthorsPage from "./authors/ManageAuthorsPage"; //eslint-disable-line import/no-named-as-default
+import ManageAuthorPage from "./authors/ManageAuthorPage"; //eslint-disable-line import/no-named-as-default
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,8 +21,9 @@ function App() {
         <Route path="/courses" component={CoursesPage} />
         <Route path="/course/:slug" component={ManageCoursePage} />
         <Route path="/course" component={ManageCoursePage} />
-        <Route path="/author/:slug" component={ManageAuthorsPage} />
-        <Route path="/author/" component={ManageAuthorsPage} />
+        <Route path="/authors/" component={AuthorsPage} />
+        <Route path="/author/:id" component={ManageAuthorPage} />
+        <Route path="/author/" component={ManageAuthorPage} />
         <Route component={PageNotFound} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
