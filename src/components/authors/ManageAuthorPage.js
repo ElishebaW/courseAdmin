@@ -7,7 +7,7 @@ import { newAuthor } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-export function ManageAuthorsPage({
+export function ManageAuthorPage({
   authors,
   loadAuthors,
   saveAuthor,
@@ -26,30 +26,27 @@ export function ManageAuthorsPage({
     } else {
       setAuthor({ ...props.author });
     }
-  }, []);
+  }, [props.author]);
 
   function handleChange(event) {
-    debugger;
-    const { value } = event.target;
+    const { value, name } = event.target;
+    console.log(props.author);
     setAuthor(prevAuthor => ({
       ...prevAuthor,
-      value
+      [name]: value
     }));
   }
 
   function formIsValid() {
     const errors = {};
+    if (!author.name) errors.author = "Author is required";
     debugger;
-
-    if (!author) errors.author = "Author is required";
-
     setErrors(errors);
     // Form is valid if the errors object still has no properties
     return Object.keys(errors).length === 0;
   }
 
   function handleSave(event) {
-    debugger;
     event.preventDefault();
     if (!formIsValid()) return;
     setSaving(true);
@@ -60,6 +57,7 @@ export function ManageAuthorsPage({
       })
       .catch(error => {
         setSaving(false);
+        debugger;
         setErrors({ onSave: error.message });
       });
   }
@@ -77,7 +75,7 @@ export function ManageAuthorsPage({
   );
 }
 
-ManageAuthorsPage.propTypes = {
+ManageAuthorPage.propTypes = {
   authors: PropTypes.array.isRequired,
   author: PropTypes.object.isRequired,
   loadAuthors: PropTypes.func.isRequired,
@@ -109,4 +107,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ManageAuthorsPage);
+)(ManageAuthorPage);
