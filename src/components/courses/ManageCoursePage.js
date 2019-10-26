@@ -48,6 +48,7 @@ export function ManageCoursePage({
   function formIsValid() {
     const { title, authorId, category } = course;
     const errors = {};
+    debugger;
 
     if (!title) errors.title = "Title is required.";
     if (!authorId) errors.author = "Author is required";
@@ -60,6 +61,7 @@ export function ManageCoursePage({
 
   function handleSave(event) {
     event.preventDefault();
+    debugger;
     if (!formIsValid()) return;
     setSaving(true);
     saveCourse(course)

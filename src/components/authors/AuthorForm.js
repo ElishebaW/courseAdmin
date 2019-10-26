@@ -9,6 +9,7 @@ const AuthorsForm = ({
   saving = false,
   errors = {}
 }) => {
+  debugger;
   return (
     <form onSubmit={onSave}>
       <h2>{author.id ? "Edit" : "Add"} Author</h2>
@@ -18,7 +19,8 @@ const AuthorsForm = ({
         </div>
       )}
       <TextInput
-        name="authorName"
+        key={author.id}
+        name="name"
         label="Author Name"
         value={author.name}
         onChange={onChange}
